@@ -154,3 +154,98 @@ Les développeurs lisent fréquemment des ouvrages techniques (programmation, de
 - Script SQL (création + insertion test)
 - Interface fonctionnelle
 - Présentation de soutenance
+
+## Features
+
+- User authentication (JWT)
+- Book management (CRUD operations)
+- Category organization
+- Reading status tracking
+- Book lending system
+- Visual statistics
+- Dynamic filtering and sorting
+- Responsive design
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- MySQL
+
+## Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/devbook.git
+   cd devbook
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create `.env` file:
+   ```
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=your_password
+   DB_NAME=devbook
+   JWT_SECRET=your_jwt_secret
+   PORT=3000
+   ```
+
+4. Set up database:
+   ```bash
+   npm run setup-db
+   ```
+
+5. Start the server:
+   ```bash
+   npm run dev
+   ```
+
+6. Open http://localhost:3000 in your browser
+
+## Project Structure
+
+```
+devbook/
+├── backend/
+│   ├── server.js
+│   ├── db.js
+│   ├── middleware/
+│   └── routes/
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── js/
+├── database_setup.sql
+└── README.md
+```
+
+## API Endpoints
+
+### Authentication
+- POST /api/auth/register
+- POST /api/auth/login
+
+### Books
+- GET /api/books
+- POST /api/books
+- PUT /api/books/:id
+- DELETE /api/books/:id
+- POST /api/books/:id/borrow
+- POST /api/books/:id/return
+
+### Categories
+- GET /api/categories
+- POST /api/categories
+- DELETE /api/categories/:id
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
