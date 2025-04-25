@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple DevBook</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <span class="material-icons">menu_book</span>
+        <h1>Simple DevBook</h1>
+      </div>
+      <nav>
+        <ul id="nav-items">
+          <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+          <li><a href="#" class="nav-link" data-page="books">Books</a></li>
+          <li><a href="#" class="nav-link" data-page="categories">Categories</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="notification" class="hide"></div>
+    
+    <div id="content">
+      <section id="home-page" class="active-page">
+        <div class="welcome-section">
+          <h2>Welcome to Simple DevBook</h2>
+          <p>A simple book management system for your personal or small library needs.</p>
+          <div class="actions">
+            <button class="btn primary" id="browse-books-btn">Browse Books</button>
+            <button class="btn secondary" id="login-btn">Login</button>
+          </div>
+        </div>
+        
+        <div class="features">
+          <div class="feature-card">
+            <span class="material-icons">local_library</span>
+            <h3>Manage Books</h3>
+            <p>Add, edit, and organize your books by categories.</p>
+          </div>
+          <div class="feature-card">
+            <span class="material-icons">category</span>
+            <h3>Categories</h3>
+            <p>Create custom categories to organize your collection.</p>
+          </div>
+          <div class="feature-card">
+            <span class="material-icons">swap_horiz</span>
+            <h3>Track Borrowing</h3>
+            <p>Keep track of who borrowed which books and when.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section id="login-page" class="page">
+        <h2>Login</h2>
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required>
+          </div>
+          <button type="submit" class="btn primary">Login</button>
+        </form>
+        <p class="form-footer">
+          Don't have an account? <a href="#" class="nav-link" data-page="register">Register</a>
+        </p>
+      </section>
+      
+      <section id="register-page" class="page">
+        <h2>Register</h2>
+        <form id="register-form" class="auth-form">
+          <div class="form-group">
+            <label for="register-username">Username</label>
+            <input type="text" id="register-username" required>
+          </div>
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" required>
+          </div>
+          <div class="form-group">
+            <label for="register-confirm-password">Confirm Password</label>
+            <input type="password" id="register-confirm-password" required>
+          </div>
+          <button type="submit" class="btn primary">Register</button>
+        </form>
+        <p class="form-footer">
+          Already have an account? <a href="#" class="nav-link" data-page="login">Login</a>
+        </p>
+      </section>
+      
+      <section id="books-page" class="page">
+        <div class="page-header">
+          <h2>Books</h2>
+          <div id="books-controls">
+            <button class="btn primary add-btn" id="add-book-btn">
+              <span class="material-icons">add</span> Add Book
+            </button>
+          </div>
+        </div>
+        
+        <div id="books-list" class="cards-container">
+          <div class="loading">Loading books...</div>
+        </div>
+        
+        <div id="book-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="book-modal-title">Add New Book</h3>
+            <form id="book-form">
+              <input type="hidden" id="book-id">
+              <div class="form-group">
+                <label for="book-title">Title</label>
+                <input type="text" id="book-title">
+              </div>
+              <div class="form-group">
+                <label for="book-author">Author</label>
+                <input type="text" id="book-author" >
+              </div>
+              <div class="form-group">
+                <label for="book-category">Category</label>
+                <select id="book-category">
+                  <option value="">-- Select Category --</option>
+                </select>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn secondary" id="cancel-book-btn">Cancel</button>
+                <button type="submit" class="btn primary" id="save-book-btn">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      
+      <section id="categories-page" class="page">
+        <div class="page-header">
+          <h2>Categories</h2>
+          <div id="categories-controls">
+            <button class="btn primary add-btn" id="add-category-btn">
+              <span class="material-icons">add</span> Add Category
+            </button>
+          </div>
+        </div>
+        
+        <div id="categories-list" class="table-container">
+          <table id="categories-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <div class="loading">Loading categories...</div>
+        </div>
+        
+        <div id="category-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Add New Category</h3>
+            <form id="category-form">
+              <div class="form-group">
+                <label for="category-name">Name</label>
+                <input type="text" id="category-name" required>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn secondary" id="cancel-category-btn">Cancel</button>
+                <button type="submit" class="btn primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Simple DevBook</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/books.js"></script>
+  <script src="js/categories.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
